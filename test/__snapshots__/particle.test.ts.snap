@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`errors on 0 speeds 1`] = `"A speed of zero would result in an infinite loop, check inputs."`;
+
+exports[`errors on float speeds 1`] = `"Floats currently not supported."`;
+
+exports[`example 0, ..R...., 2 1`] = `
+[
+  "..X....",
+  "....X..",
+  "......X",
+  ".......",
+]
+`;
+
+exports[`example 1, RR..LRL, 3 1`] = `
+[
+  "XX..XXX",
+  ".X.XX..",
+  "X.....X",
+  ".......",
+]
+`;
+
+exports[`example 2, LRLR.LRLR, 2 1`] = `
+[
+  "XXXX.XXXX",
+  "X..X.X..X",
+  ".X.X.X.X.",
+  ".X.....X.",
+  ".........",
+]
+`;
+
+exports[`example 3, RLRLRLRLRL, 10 1`] = `
+[
+  "XXXXXXXXXX",
+  "..........",
+]
+`;
+
+exports[`fast particles, R.LR.L, 20 1`] = `
+[
+  "X.XX.X",
+  "......",
+]
+`;
+
+exports[`moves left, .....L, 1 1`] = `
+[
+  ".....X",
+  "....X.",
+  "...X..",
+  "..X...",
+  ".X....",
+  "X.....",
+]
+`;
+
+exports[`moves right, R....., 2 1`] = `
+[
+  "X.....",
+  "..X...",
+  "....X.",
+  "......",
+]
+`;
+
+exports[`multiple particles, R.LR.L, 1 1`] = `
+[
+  "X.XX.X",
+  ".X..X.",
+  "X.XX.X",
+  "..XX..",
+  ".X..X.",
+  "X....X",
+  "......",
+]
+`;
+
+exports[`negative speeds, R.LR.L, -2 1`] = `
+[
+  "X.XX.X",
+  "X.XX.X",
+  ".X..X.",
+  "......",
+]
+`;
+
+exports[`no chamber length 1`] = `
+[
+  "",
+]
+`;

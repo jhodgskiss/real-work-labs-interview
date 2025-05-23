@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`capital letters 1`] = `"ghijklmnopqrstuvwxyz"`;
+
+exports[`empty string 1`] = `"abcdefghijklmnopqrstuvwxyz"`;
+
+exports[`example 0 1`] = `"bjkmqz"`;
+
+exports[`example 1 1`] = `""`;
