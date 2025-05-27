@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`chamber length 1 1`] = `
+[
+  "X",
+  ".",
+]
+`;
+
+exports[`chamber length 1, no particle 1`] = `
+[
+  ".",
+]
+`;
+
 exports[`errors on 0 speeds 1`] = `"A speed of zero would result in an infinite loop, check inputs."`;
 
 exports[`errors on float speeds 1`] = `"Floats currently not supported."`;
@@ -54,6 +67,28 @@ exports[`moves left, .....L, 1 1`] = `
   "..X...",
   ".X....",
   "X.....",
+  "......",
+]
+`;
+
+exports[`moves left, negative, .....R, -1 1`] = `
+[
+  ".....X",
+  "....X.",
+  "...X..",
+  "..X...",
+  ".X....",
+  "X.....",
+  "......",
+]
+`;
+
+exports[`moves right, L....., -2 1`] = `
+[
+  "X.....",
+  "..X...",
+  "....X.",
+  "......",
 ]
 `;
 
@@ -80,7 +115,6 @@ exports[`multiple particles, R.LR.L, 1 1`] = `
 
 exports[`negative speeds, R.LR.L, -2 1`] = `
 [
-  "X.XX.X",
   "X.XX.X",
   ".X..X.",
   "......",

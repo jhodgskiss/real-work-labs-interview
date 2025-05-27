@@ -8,7 +8,7 @@ class Particle {
     }
 
     getDistanceToExit(chamberLength: number): number {
-        return this.speed > 0 ? chamberLength - this.position : this.position;
+        return this.speed > 0 ? chamberLength - this.position : this.position + 1;
     }
 
     step(chamberLength: number): boolean {
@@ -32,10 +32,10 @@ export function animate(initialPosition: string, speed: number) {
     Array.from(initialPosition).forEach((char, index) => {
         switch (char) {
         case 'R':
-            particles.push(new Particle(index, speed > 0 ? speed : -speed));
+            particles.push(new Particle(index, speed));
             break;
         case 'L':
-            particles.push(new Particle(index, speed > 0 ? -speed : speed));
+            particles.push(new Particle(index, -speed));
             break;
         default:
             break;

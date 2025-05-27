@@ -1,15 +1,31 @@
-import { animate } from "../src/particle";
+import { animate } from "../src/particle-chamber";
 
 test('moves left, .....L, 1', () => {
     expect(animate('.....L', 1)).toMatchSnapshot();
+});
+
+test('moves left, negative, .....R, -1', () => {
+    expect(animate('.....R', -1)).toMatchSnapshot();
 });
 
 test('moves right, R....., 2', () => {
     expect(animate('R.....', 2)).toMatchSnapshot();
 });
 
+test('moves right, L....., -2', () => {
+    expect(animate('L.....', -2)).toMatchSnapshot();
+});
+
 test('multiple particles, R.LR.L, 1', () => {
     expect(animate('R.LR.L', 1)).toMatchSnapshot();
+});
+
+test('chamber length 1', () => {
+    expect(animate('R', 1)).toMatchSnapshot();
+});
+
+test('chamber length 1, no particle', () => {
+    expect(animate('.', 1)).toMatchSnapshot();
 });
 
 test('fast particles, R.LR.L, 20', () => {
