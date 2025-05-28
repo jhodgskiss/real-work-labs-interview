@@ -113,6 +113,14 @@ exports[`multiple particles, R.LR.L, 1 1`] = `
 ]
 `;
 
+exports[`negative speeds, ..R..L.., -2 1`] = `
+[
+  "..X..X..",
+  "X......X",
+  "........",
+]
+`;
+
 exports[`negative speeds, R.LR.L, -2 1`] = `
 [
   "X.XX.X",

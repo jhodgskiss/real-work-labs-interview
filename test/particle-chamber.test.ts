@@ -36,6 +36,10 @@ test('negative speeds, R.LR.L, -2', () => {
     expect(animate('R.LR.L', -2)).toMatchSnapshot();
 });
 
+test('negative speeds, ..R..L.., -2', () => {
+    expect(animate('..R..L..', -2)).toMatchSnapshot();
+});
+
 test('no chamber length', () => {
     expect(animate('', 1)).toMatchSnapshot();
 });

@@ -43,7 +43,7 @@ export function animate(initialPosition: string, speed: number) {
     });
 
     const maxDistance = Math.max(...particles.map(particle => particle.getDistanceToExit(chamberLength)), 0);
-    const maxSteps = Math.abs(Math.ceil(maxDistance / speed));
+    const maxSteps = Math.ceil(maxDistance / Math.abs(speed));
 
     const particleArrays: string[][] = [...Array(maxSteps + 1)].map(() => Array(chamberLength).fill('.'));
 
