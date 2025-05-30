@@ -7,20 +7,52 @@ class Particle {
         this.speed = speed;
     }
 
-    getDistanceToExit(chamberLength: number): number {
-        return this.speed > 0 ? chamberLength - this.position : this.position + 1;
-    }
-
+    // advance particle and return whether it is still in the chamber
     step(chamberLength: number): boolean {
         this.position += this.speed;
         return this.speed > 0 ? this.position < chamberLength : this.position >= 0;
     }
 }
 
-export function animate(initialPosition: string, speed: number) {
-    const particles: Particle[] = [];
-    const chamberLength: number = initialPosition.length;
+class ParticleChamber {
+    particles: Particle[];
+    length: number;
 
+    constructor(initialPosition: string, speed: number) {
+        this.particles = [];
+        this.length = initialPosition.length;
+
+        Array.from(initialPosition).forEach((char, index) => {
+            switch (char) {
+            case 'R':
+                this.addParticle(index, speed);
+                break;
+            case 'L':
+                this.addParticle(index, -speed);
+                break;
+            default:
+                break;
+            }
+        });
+    }
+
+    addParticle(position: number, speed: number) {
+        this.particles.push(new Particle(position, speed));
+    }
+
+    getChamberState(): string {
+        const chamberArray = Array(this.length).fill('.');
+        this.particles.forEach(particle => chamberArray[particle.position] = 'X');
+        return chamberArray.join('');
+    }
+
+    // advances particles and removes those outside chamber
+    step() {
+        this.particles = this.particles.filter(particle => particle.step(this.length));
+    }
+}
+
+export function animate(initialPosition: string, speed: number) {
     if (speed === 0) {
         throw new Error('A speed of zero would result in an infinite loop, check inputs.');
     }
@@ -29,30 +61,13 @@ export function animate(initialPosition: string, speed: number) {
         throw new Error('Floats currently not supported.');
     }
 
-    Array.from(initialPosition).forEach((char, index) => {
-        switch (char) {
-        case 'R':
-            particles.push(new Particle(index, speed));
-            break;
-        case 'L':
-            particles.push(new Particle(index, -speed));
-            break;
-        default:
-            break;
-        }
-    });
+    const chamber = new ParticleChamber(initialPosition, speed);
+    const chamberArrays: string[] = [chamber.getChamberState()];
 
-    const maxDistance = Math.max(...particles.map(particle => particle.getDistanceToExit(chamberLength)), 0);
-    const maxSteps = Math.ceil(maxDistance / Math.abs(speed));
+    while (chamber.particles.length) {
+        chamber.step();
+        chamberArrays.push(chamber.getChamberState());
+    }
 
-    const particleArrays: string[][] = [...Array(maxSteps + 1)].map(() => Array(chamberLength).fill('.'));
-
-    particles.forEach(particle => {
-        let time = 0;
-        do {
-            particleArrays[time++][particle.position] = 'X';
-        } while (particle.step(chamberLength));
-    });
-
-    return particleArrays.map(charArray => charArray.join(''));
+    return chamberArrays;
 }
